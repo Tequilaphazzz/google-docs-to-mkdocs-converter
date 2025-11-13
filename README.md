@@ -1,7 +1,3 @@
-Конечно, вот `README.md` полностью на английском языке.
-
------
-
 # 🚀 Google Docs to MkDocs Converter
 
 This ETL script automates the process of converting Google Docs into Markdown (with HTML elements), asynchronously downloads all related images, and uploads the final `.md` files and image folders to a remote server via SFTP.
@@ -210,5 +206,6 @@ Once `token.json` is created, all subsequent runs will execute automatically wit
 ```bash
 python run.py
 ```
+
 
 The script will now process the documents according to your Google Sheet.
