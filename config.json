@@ -1,0 +1,88 @@
+{
+  // ---
+  // 1. GOOGLE API SETTINGS
+  // ---
+  "google_api": {
+    // The ID of your main controlling Google Sheet.
+    // Get this from the URL: https://docs.google.com/spreadsheets/d/THIS_IS_THE_ID/edit
+    "sheet_id": "1h_t9wM_3MpNVzVtmFmoGFa_8h8UXGbV6pLu9b4BIduU",
+
+    // Scopes (permissions) the script will request from the user.
+    // It's not recommended to change these.
+    "scopes": [
+      "https://www.googleapis.com/auth/documents.readonly", // Read Google Docs
+      "https://www.googleapis.com/auth/drive.readonly",    // Read files on Drive (for images)
+      "https://www.googleapis.com/auth/spreadsheets.readonly" // Read Google Sheets
+    ],
+
+    // The filename for storing the session token (generated on first run).
+    "token_file": "token.json",
+
+    // The filename for your OAuth2 client secrets (downloaded from Google Cloud Console).
+    "credentials_file": "credentials.json",
+
+    // Cell ranges within your Google Sheet
+    "sheet_ranges": {
+      // Cells where SFTP credentials are stored (B1=User, B2=Pass, B3=Host, B4=Port)
+      "credentials": "Credentials!B1:B4",
+      // Cells where the list of documents to convert is stored
+      "links": "Links!A:D"
+    }
+  },
+
+  // ---
+  // 2. CONVERSION SETTINGS
+  // ---
+  "conversion": {
+    // Maximum document size in characters.
+    // Documents larger than this will be rejected with an error.
+    "max_document_size_chars": 150000,
+
+    // Chunk size in characters.
+    // If a document is large (but smaller than max_document_size_chars),
+    // it will be processed in chunks of this size to avoid API timeouts.
+    "chunk_size_chars": 50000,
+
+    // List of fonts that the script will treat as a code block.
+    "code_fonts": [
+      "consolas",
+      "courier",
+      "monaco",
+      "monospace"
+    ],
+
+    // The RGB value (0-255) of the gray background for inline code.
+    // In Google Docs, this is #d9d9d9, which equals 217.
+    "inline_code_marker_rgb_float": 217.0,
+
+    // Tolerance for detecting the background color (0.25 = 25%).
+    "inline_code_marker_tolerance": 0.25,
+
+    // Special character that Google Docs inserts to denote code blocks.
+    // (Usually, you don't need to touch this).
+    "code_block_marker_char": ""
+  },
+
+  // ---
+  // 3. NETWORK SETTINGS
+  // ---
+  "network": {
+    // Maximum time to wait for a response when downloading images (in seconds).
+    "request_timeout_seconds": 120,
+
+    // Number of images the script will download SIMULTANEOUSLY.
+    // Don't set this too high to avoid rate limits.
+    "max_concurrent_image_downloads": 3
+  },
+
+  // ---
+  // 4. LOGGING SETTINGS
+  // ---
+  "logging": {
+    // Log verbosity level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+    "level": "INFO",
+
+    // Log output format.
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  }
+}
